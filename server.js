@@ -168,6 +168,19 @@ Person.find({ height: { $gt: 180 }, salary: { $gt: 30000 } })
     console.error("Error finding people:", err);
   });
 
+Person.find({
+  $or: [{ hair: "grey" }, { eyes: "grey" }],
+  weight: { $lt: 70 },
+})
+  .then((people) => {
+    console.log(
+      "People who have grey hair or eyes and are skinny (<70):",
+      people
+    );
+  })
+  .catch((err) => {
+    console.error("Error finding people:", err);
+  });
 /*=====================================================
 Start the server:
 =======================================================*/
