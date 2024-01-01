@@ -159,6 +159,15 @@ Person.find({})
     }
   });
 
+Person.find({ height: { $gt: 180 }, salary: { $gt: 30000 } })
+  .then((people) => {
+    console.log(people);
+    console.log("People who are tall (>180) and rich (>30000):", people.salary);
+  })
+  .catch((err) => {
+    console.error("Error finding people:", err);
+  });
+
 /*=====================================================
 Start the server:
 =======================================================*/
